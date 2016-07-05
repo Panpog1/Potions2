@@ -8,7 +8,7 @@
 #ifndef R_H_
 #define R_H_
 
-#include <Potion.h>
+#include "Potion.h"
 #include <memory>
 
 class R: public Potion {

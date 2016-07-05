@@ -7,10 +7,10 @@
 
 #include <string>
 #include <iostream>
-#include <Potion.h>
-#include <Base.h>
-#include <R.h>
-#include <memory>
+#include "Potion.h"
+#include "Base.h"
+#include "R.h"
+#include "memory"
 
 std::unique_ptr<Potion> make(Potion* x) {
 	return static_cast<std::unique_ptr<Potion>>(x);

@@ -8,7 +8,7 @@
 #ifndef BASE_H_
 #define BASE_H_
 
-#include <Potion.h>
+#include "Potion.h"
 
 class Base: public Potion {
 public:
