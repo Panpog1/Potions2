@@ -18,11 +18,11 @@ public:
 	virtual ~Potion() {
 	}
 	virtual operator std::string() const=0;
-	virtual bool react(std::vector<std::unique_ptr<Potion>> & reactants) { //return whether anything happened
+	virtual bool react(std::vector<std::unique_ptr<Potion>> & reactants) const { //return whether anything happened
 		return false;
 	}
-	bool operator==(const Potion& other);
-	virtual bool isEqualToPeer(const Potion& other) {
+	bool operator==(const Potion& other) const;
+	virtual bool isEqualToPeer(const Potion& other) const{
 		return true;
 	}
 };

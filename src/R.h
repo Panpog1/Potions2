@@ -16,10 +16,10 @@ public:
 	explicit R(Potion* target);
 	virtual ~R();
 	virtual operator std::string() const;
-	virtual bool react(std::vector<std::unique_ptr<Potion>>& reactants);
-	virtual bool isEqualToPeer(const Potion& other);
+	virtual bool react(std::vector<std::unique_ptr<Potion>>& reactants) const;
+	virtual bool isEqualToPeer(const Potion& other) const;
 private:
-	bool react_test(std::unique_ptr<Potion>&);
+	bool react_test(const std::unique_ptr<Potion>&) const;
 	std::unique_ptr<Potion> target;
 };
 

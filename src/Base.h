@@ -16,9 +16,9 @@ public:
 	virtual ~Base() {
 	}
 	virtual operator std::string() const;
-	virtual bool isEqualToPeer(const Potion& other);
+	virtual bool isEqualToPeer(const Potion& other) const;
 private:
-	std::string name;
+	const std::string name;
 };
 
 #endif /* BASE_H_ */
