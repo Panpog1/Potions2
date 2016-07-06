@@ -14,10 +14,6 @@ R::R(Potion* target) {
 	this->target=std::unique_ptr<Potion>(target);
 }
 
-R::~R() {
-	// TODO Auto-generated destructor stub
-}
-
 R::operator std::string() const {
 	return "R" + static_cast<std::string>(*target);
 }

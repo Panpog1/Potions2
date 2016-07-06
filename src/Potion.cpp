@@ -11,7 +11,7 @@
 
 
 bool Potion::operator==(const Potion& other) const{
-	if  (!( typeid(*this) == typeid(other))){
+	if  (typeid(*this) != typeid(other)){
 		return false;
 	}
 	return isEqualToPeer(other);

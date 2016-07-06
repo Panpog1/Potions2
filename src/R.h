@@ -9,12 +9,10 @@
 #define R_H_
 
 #include "Potion.h"
-#include <memory>
 
 class R: public Potion {
 public:
 	explicit R(Potion* target);
-	virtual ~R();
 	virtual operator std::string() const;
 	virtual bool react(std::vector<std::unique_ptr<Potion>>& reactants) const;
 	virtual bool isEqualToPeer(const Potion& other) const;

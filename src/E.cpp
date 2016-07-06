@@ -6,13 +6,18 @@
  */
 
 #include "E.h"
+#include <string>
 
-E::E() {
-	// TODO Auto-generated constructor stub
-
+E::E(Potion* of) {
+	this->of = std::unique_ptr<Potion>(of);
 }
 
-E::~E() {
-	// TODO Auto-generated destructor stub
+bool E::isEqualToPeer(const Potion& other) const {
+	return this->of == static_cast<const E&>(other).of;
 }
+
+E::operator std::string()const{
+	return "E"+static_cast<std::string>(*of);
+}
+
 

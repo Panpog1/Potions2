@@ -10,7 +10,7 @@
 #include "Potion.h"
 #include "Base.h"
 #include "R.h"
-#include "memory"
+#include "E.h"
 
 std::unique_ptr<Potion> make(Potion* x) {
 	return static_cast<std::unique_ptr<Potion>>(x);
@@ -32,12 +32,17 @@ void react(std::vector<std::unique_ptr<Potion>>&v) {
 
 int main() {
 	std::vector<std::unique_ptr<Potion>> v;
+	if(R(new Base("foo"))==E(new Base("foo")))
+		std::cout<<"fail 1";
 	v.push_back(make(new Base("foo")));
 	v.push_back(make(new Base("bar")));
 	v.push_back(make(new Base("A thing")));
 	v.push_back(make(new Base("Another thing")));
 	v.push_back(make(new R(new Base("foo"))));
+	v.push_back(make(new E(new Base("foo"))));
+	v.push_back(make(new E(new Base("bar"))));
 	react(v);
+	std::cout<<"size = " << v.size() << std::endl;
 	for (const std::unique_ptr<Potion>& i : v) {
 		std::cout << static_cast<std::string>(*i) << " is still in v\n";
 	}
