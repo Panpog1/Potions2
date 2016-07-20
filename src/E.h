@@ -12,7 +12,7 @@
 
 class E: public Potion {//E for essence
 public:
-	E(Potion* of);
+	explicit E(Potion* of);
 	virtual bool isEqualToPeer(const Potion& other) const;
 	virtual operator std::string()const;
 private:

@@ -22,7 +22,7 @@ public:
 		return false;
 	}
 	bool operator==(const Potion& other) const;
-	virtual bool isEqualToPeer(const Potion& other) const{
+	virtual bool isEqualToPeer(const Potion& other) const {
 		return true;
 	}
 };
