@@ -7,6 +7,7 @@
 
 #include <string>
 #include <iostream>
+#include <exception>
 #include "Potion.h"
 #include "Base.h"
 #include "R.h"
@@ -17,17 +18,16 @@ std::unique_ptr<Potion> make(Potion* x) {
 }
 
 bool step(std::vector<std::unique_ptr<Potion>>&v) { //true if and only if the result is stable
-	for (auto& reactant : v) {
-		if (reactant->react(v)) {
-			return false;
+	for (auto& r1 : v) {
+		for (uint i = 0; i < v.size(); i++) {
+			Command command = r1->react(v[i]);
+			if (command == removeOther) {
+				v.erase(v.begin() + i);
+				return false;
+			}
 		}
 	}
 	return true;
-}
-
-void react(std::vector<std::unique_ptr<Potion>>&v) {
-	while (!step(v))
-		;
 }
 
 void print(const std::vector<std::unique_ptr<Potion> >& v) {
@@ -35,7 +35,17 @@ void print(const std::vector<std::unique_ptr<Potion> >& v) {
 	for (const std::unique_ptr<Potion>& i : v) {
 		std::cout << static_cast<std::string>(*i) << " is still in v\n";
 	}
-	std::cout << "done\n";
+	std::cout << "done" << std::endl;
+}
+
+void react(std::vector<std::unique_ptr<Potion>>&v) {
+	int i = 0;
+	while (!step(v)) {
+		if (i++ > 1000) {
+			print(v);
+			throw std::runtime_error("react in loop?");
+		}
+	}
 }
 
 int main() {
@@ -55,7 +65,7 @@ int main() {
 		//std::cout <<static_cast<std::string>(*make(new E(new Base("bar"))));
 		react(v);
 		print(v);
-	}else{
+	} else {
 		v.push_back(make(new R(new Base("foo"))));
 		v.push_back(make(new E(new Base("foo"))));
 		react(v);

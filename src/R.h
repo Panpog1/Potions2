@@ -14,8 +14,8 @@ class R: public Potion {
 public:
 	explicit R(Potion* target);
 	virtual operator std::string() const;
-	virtual bool react(std::vector<std::unique_ptr<Potion>>& reactants) const;
-	virtual bool isEqualToPeer(const Potion& other) const;
+	Command react(std::unique_ptr<Potion>& other) const;
+	bool isEqualToPeer(const Potion& other) const;
 private:
 	bool react_test(const std::unique_ptr<Potion>&) const;
 	std::unique_ptr<Potion> target;
