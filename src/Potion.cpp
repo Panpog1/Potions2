@@ -9,8 +9,8 @@
 #include <typeinfo>
 #include <iostream>
 
-bool Potion::operator==(const Potion& other) const{
-	if  (typeid(*this) != typeid(other)){
+bool Potion::operator==(const Potion& other) const {
+	if (typeid(*this) != typeid(other)) {
 		return false;
 	}
 	return isEqualToPeer(other);

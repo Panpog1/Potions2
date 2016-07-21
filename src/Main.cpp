@@ -41,7 +41,7 @@ void print(const std::vector<std::unique_ptr<Potion> >& v) {
 void react(std::vector<std::unique_ptr<Potion>>&v) {
 	int i = 0;
 	while (!step(v)) {
-		if (i++ > 1000) {
+		if (++i > 1000) {
 			print(v);
 			throw std::runtime_error("react in loop?");
 		}

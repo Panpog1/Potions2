@@ -18,10 +18,9 @@ R::operator std::string() const {
 	return "R" + static_cast<std::string>(*target);
 }
 
-Command R::react(std::unique_ptr<Potion>& other) const{
-	return (*other == *target)?removeOther:nop;
+Command R::react(std::unique_ptr<Potion>& other) const {
+	return (*other == *target) ? removeOther : nop;
 }
-
 
 bool R::isEqualToPeer(const Potion& other) const {
 	return target == dynamic_cast<const R&>(other).target;

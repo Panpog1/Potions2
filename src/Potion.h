@@ -11,9 +11,8 @@
 #include <vector>
 #include <memory>
 
-enum Command{
-	nop,
-	removeOther
+enum Command {
+	nop, removeOther
 };
 
 class Potion {
@@ -23,7 +22,7 @@ public:
 	virtual ~Potion() {
 	}
 	virtual operator std::string() const=0;
-	virtual Command react(std::unique_ptr<Potion>& other) const{//return weather other should be removed
+	virtual Command react(std::unique_ptr<Potion>& other) const { //return weather other should be removed
 		return nop;
 	}
 	bool operator==(const Potion& other) const;

@@ -16,8 +16,7 @@ bool E::isEqualToPeer(const Potion& other) const {
 	return this->of == static_cast<const E&>(other).of;
 }
 
-E::operator std::string()const{
-	return "E"+static_cast<std::string>(*of);
+E::operator std::string() const {
+	return "E" + static_cast<std::string>(*of);
 }
-
 

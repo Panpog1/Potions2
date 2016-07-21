@@ -10,11 +10,11 @@
 
 #include "Potion.h"
 
-class E: public Potion {//E for essence
+class E: public Potion { //E for essence
 public:
 	explicit E(Potion* of);
 	virtual bool isEqualToPeer(const Potion& other) const;
-	virtual operator std::string()const;
+	virtual operator std::string() const;
 private:
 	std::unique_ptr<Potion> of;
 };
