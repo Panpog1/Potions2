@@ -10,10 +10,7 @@
 #include <string>
 #include <vector>
 #include <memory>
-
-enum class Command {
-	NOP, REMOVE_OTHER
-};
+#include "Commands.h"
 
 class Potion {
 public:

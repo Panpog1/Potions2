@@ -12,6 +12,7 @@
 #include "Base.h"
 #include "R.h"
 #include "E.h"
+#include "Ae.h"
 
 std::unique_ptr<Potion> make(Potion* x) {
 	return static_cast<std::unique_ptr<Potion>>(x);
@@ -20,10 +21,13 @@ std::unique_ptr<Potion> make(Potion* x) {
 bool step(std::vector<std::unique_ptr<Potion>>&v) { //true if and only if the result is stable
 	for (auto& r1 : v) {
 		for (uint i = 0; i < v.size(); i++) {
-			Command command = r1->react(v[i]);
-			if (command == Command::REMOVE_OTHER) {
+			switch (r1->react(v[i])) {
+			case Command::REMOVE_OTHER:
 				v.erase(v.begin() + i);
+			case Command::RECALCULATE:
 				return false;
+			case Command::NOP:
+				break;
 			}
 		}
 	}
@@ -61,6 +65,7 @@ int main() {
 	v.push_back(make(new R(new Base("foo"))));
 	v.push_back(make(new E(new Base("foo"))));
 	v.push_back(make(new E(new Base("bar"))));
+	v.push_back(make(new Ae));
 	react(v);
 	print(v);
 	return 0;

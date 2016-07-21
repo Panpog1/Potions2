@@ -15,7 +15,6 @@ public:
 	explicit E(Potion* of);
 	virtual bool isEqualToPeer(const Potion& other) const;
 	virtual operator std::string() const;
-private:
 	std::unique_ptr<Potion> of;
 };
 
