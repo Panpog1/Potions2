@@ -19,7 +19,7 @@ R::operator std::string() const {
 }
 
 Command R::react(std::unique_ptr<Potion>& other) const {
-	return (*other == *target) ? removeOther : nop;
+	return (*other == *target) ? Command::REMOVE_OTHER : Command::NOP;
 }
 
 bool R::isEqualToPeer(const Potion& other) const {

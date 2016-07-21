@@ -11,8 +11,8 @@
 #include <vector>
 #include <memory>
 
-enum Command {
-	nop, removeOther
+enum class Command {
+	NOP, REMOVE_OTHER
 };
 
 class Potion {
@@ -23,7 +23,7 @@ public:
 	}
 	virtual operator std::string() const=0;
 	virtual Command react(std::unique_ptr<Potion>& other) const { //return weather other should be removed
-		return nop;
+		return Command::NOP;
 	}
 	bool operator==(const Potion& other) const;
 	virtual bool isEqualToPeer(const Potion& other) const {

@@ -21,7 +21,7 @@ bool step(std::vector<std::unique_ptr<Potion>>&v) { //true if and only if the re
 	for (auto& r1 : v) {
 		for (uint i = 0; i < v.size(); i++) {
 			Command command = r1->react(v[i]);
-			if (command == removeOther) {
+			if (command == Command::REMOVE_OTHER) {
 				v.erase(v.begin() + i);
 				return false;
 			}
